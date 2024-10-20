@@ -2,11 +2,12 @@
 # keywords_chroniclingamerica
 
 This script allows you to search for specific keywords or strings on [Chronicling America](https://chroniclingamerica.loc.gov) and retrieve article metadata. The search leverages the Chronicling America API and retrieves results in JSON format.
+This script serves as a simple starting point for more complex interactions with the API of Chronicling America.
 
 ## Description
 
-The script fetches and processes results based on your chosen keywords. For each keyword, it performs the following tasks:
-1. Sends a request to the Chronicling America API to fetch articles containing the keyword.
+The script fetches and processes results based on your chosen keywords/strings. For each string, it performs the following tasks:
+1. Sends a request to the Chronicling America API to fetch articles containing the string.
 2. Extracts key metadata such as titles, URLs, publication details, OCR content, and more.
 3. Processes and prints a detailed summary of each article.
 
@@ -68,24 +69,22 @@ For each search result, the script provides the following information:
 - **Country**: The country of publication.
 - **Image URL**: A link to the image of the article in `.jp2` format.
 
-## Example URL Formats
+## Notes on the URLs Formats
 
 - **Fetching all articles containing a keyword**:
   ```
   https://chroniclingamerica.loc.gov/search/pages/results/?proxtext=my%20string&rows=20&format=json
   ```
-  Replace `my%20string` with your desired search keyword, where `%20` represents a space.
+  Replace `my%20string` with your desired search keyword/string, where `%20` represents a space.
 
-- **Accessing data types**:
-  - All available types: `https://chroniclingamerica.loc.gov/lccn/sn90065065/1905-08-05/ed-1/seq-1.json`
-  - OCR text: `https://chroniclingamerica.loc.gov/lccn/sn90065065/1905-08-05/ed-1/seq-1/ocr.txt`
-  - Image: `https://chroniclingamerica.loc.gov/lccn/sn90065065/1905-08-05/ed-1/seq-1.jp2`
+- **Accessing data formats having a specific ID**:
 
-## Notes
+  Supposing you are interested in the element having ID "/lccn/sn90065065/1905-08-05/ed-1/seq-1/". 
+  - To see the available formats of this element: `https://chroniclingamerica.loc.gov/lccn/sn90065065/1905-08-05/ed-1/seq-1.json`
+  - To get its OCR text: `https://chroniclingamerica.loc.gov/lccn/sn90065065/1905-08-05/ed-1/seq-1/ocr.txt`
+  - To get its Image representation: `https://chroniclingamerica.loc.gov/lccn/sn90065065/1905-08-05/ed-1/seq-1.jp2`
 
-- The script fetches results using a GET request to the Chronicling America API with parameters like keyword, number of results, and response format.
-- It extracts metadata from the API response and formats it for easy reading.
-- **Useful links**:
+## Useful links
   - https://chroniclingamerica.loc.gov/about/api/
   - https://github.com/LibraryOfCongress/data-exploration/tree/master
   - https://guides.loc.gov/digital-scholarship/accessing-digital-materials#s-lib-ctab-26648178-2
